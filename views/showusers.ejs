@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Users</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2 style="text-align: center;">All Users</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Email</th>
+                    <th>Username</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% users.forEach(user => { %>
+                <tr>
+                    <td><%= user.userId %></td>
+                    <td><%= user.email %></td>
+                    <td><%= user.username %></td>
+                    <td class="actions-cell">
+                        <!-- Edit Button -->
+                        <form method="GET" action="/user/<%= user.userId %>/edit" style="display:inline;">
+                            <button class="edit-btn">Edit</button>
+                        </form>
+                        <!-- Delete Form -->
+                        <form method="POST" action="/user/<%= user.userId %>?_method=DELETE" style="display:inline;">
+                            <input type="password" name="password" placeholder="Password" required class="password-input"> <button class="delete-btn" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

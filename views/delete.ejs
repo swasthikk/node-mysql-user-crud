@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete User</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Are you sure you want to delete <%= user.email %>?</h2>
+        <form action="/user/<%= user.userId %>?_method=DELETE" method="POST">
+            <button type="submit">Yes, Delete</button>
+            <a href="/users"><button type="button">Cancel</button></a>
+        </form>
+    </div>
+</body>
+</html>
